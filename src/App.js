@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-function App() {
+import Navbar from './components/layouts/navbar';
+import Home from './components/home';
+import Contact from './components/contact';
+import Blog from './components/blog';
+import Login from './components/auth/login';
+import Register from './components/auth/register';
+import JoinTeam from './components/joinTeam';
+import Footer from './components/layouts/footer';
+import './App.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="">
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route path="/register" exact component={Register} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/home" exact component={Home} />
+          <Route path="/blog" exact component={Blog} />
+          <Route path="/career" exact component={JoinTeam} />
+          <Route path="/contact" exact component={Contact} />
+          <Route path="/" exact component={Home} />
+        </Switch>
+        <Footer />
+      </Router>
     </div>
   );
 }
-
-export default App;
